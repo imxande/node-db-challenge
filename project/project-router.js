@@ -64,6 +64,7 @@ router.post("/", (req,res)=>{
         })
 });
 
+// creating a task here
 router.post("/:id/tasks", (req,res)=>{
     Projects.addTask({...req.body,project_id:req.params.id})
         .then(task=>{
@@ -75,5 +76,19 @@ router.post("/:id/tasks", (req,res)=>{
             res.status(500).json({errorMessage:'Task not added, server error!'});
         })
 });
+
+// finding the task here
+router.get("/:id/tasks", (req,res)=>{
+    Projects.findTask(req.params.id)
+        .then(task =>{
+            // return success status and send back the response
+            res.status(200).json(task);
+        })
+        .catch(error=>{
+            console.log(error);
+            res.status(500).json({errorMessage:'Not getting tasks, server error!'});
+        })
+});
+
 // export router
 module.exports = router;

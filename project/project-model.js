@@ -7,7 +7,8 @@ module.exports = {
     addResc,
     findResc,
     addPro,
-    addTask
+    addTask,
+    findTask
 };
 
 // this function gets all the schemes
@@ -33,4 +34,12 @@ function addPro(project){
 // add task method here
 function addTask(task){
     return db.insert(task,"*").into("tasks");
+}
+
+// finding a task by id here
+function findTask(id){
+    return db("tasks")
+        .select('tasks.description','tasks.notes','projects.name')
+        .join('projects','projects.id','tasks.project_id')
+        .where("project_id", id);
 }
