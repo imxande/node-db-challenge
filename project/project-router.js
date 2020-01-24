@@ -36,5 +36,18 @@ router.get('/', (req, res) => {
             res.status(500).json({errorMessage: 'Could not add a resource, error on the server!'})
         })
   })
+
+  // getting list of resources here
+  router.get('/api/resources', (req,res)=>{
+    Projects.findResc()
+        .then(response =>{
+            // return success status and send back the response
+            res.status(200).json(response);
+        })
+        .catch(error =>{
+            console.log(error);
+            res.status(500).json({error:'Not getting resource, server error!'});
+        })
+});
 // export router
 module.exports = router;
