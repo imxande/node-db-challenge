@@ -6,7 +6,8 @@ module.exports = {
     find,
     addResc,
     findResc,
-    addPro
+    addPro,
+    addTask
 };
 
 // this function gets all the schemes
@@ -27,4 +28,9 @@ function findResc(){
 // add project method here
 function addPro(project){
     return db.insert(project,"*").into("projects");
+}
+
+// add task method here
+function addTask(task){
+    return db.insert(task,"*").into("tasks");
 }

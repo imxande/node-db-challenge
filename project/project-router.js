@@ -50,6 +50,7 @@ router.get('/', (req, res) => {
         })
 });
 
+// creating a project here
 router.post("/", (req,res)=>{
     const body = req.body;
     Projects.addPro(body)
@@ -63,5 +64,16 @@ router.post("/", (req,res)=>{
         })
 });
 
+router.post("/:id/tasks", (req,res)=>{
+    Projects.addTask({...req.body,project_id:req.params.id})
+        .then(task=>{
+            // return success status and send back the response
+            res.status(200).json(task);
+        })
+        .catch(error=>{
+            console.log(error);
+            res.status(500).json({errorMessage:'Task not added, server error!'});
+        })
+});
 // export router
 module.exports = router;

@@ -65,9 +65,9 @@ Complete the following tasks:
 - [ ] Build an API with endpoints for:
   - [x] adding resources.
   - [x] retrieving a list of resources.
-  - [ ] adding projects.
+  - [x] adding projects.
   - [x] retrieving a list of projects.
-  - [ ] adding tasks.
+  - [x] adding tasks.
   - [ ] retrieving a list of tasks. **The list of tasks should include the project name and project description**.
 
 ### Entities
