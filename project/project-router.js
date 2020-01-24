@@ -49,5 +49,19 @@ router.get('/', (req, res) => {
             res.status(500).json({error:'Not getting resource, server error!'});
         })
 });
+
+router.post("/", (req,res)=>{
+    const body = req.body;
+    Projects.addPro(body)
+        .then(project=>{
+            // return success status and send back the response
+            res.status(200).json(project);
+        })
+        .catch(error=>{
+            console.log(error);
+            res.status(500).json({ error:'Project not added, server error!'});
+        })
+});
+
 // export router
 module.exports = router;

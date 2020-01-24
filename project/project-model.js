@@ -5,7 +5,8 @@ const db = require('../data/db.config.js');
 module.exports = {
     find,
     addResc,
-    findResc
+    findResc,
+    addPro
 };
 
 // this function gets all the schemes
@@ -21,4 +22,9 @@ function addResc(resource){
 // function to find resources
 function findResc(){
     return db.into('resources');
+}
+
+// add project method here
+function addPro(project){
+    return db.insert(project,"*").into("projects");
 }
